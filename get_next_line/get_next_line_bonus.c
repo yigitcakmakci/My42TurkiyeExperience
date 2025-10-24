@@ -6,36 +6,31 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:27:50 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/09/18 17:19:39 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:14:54 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "get_next_line_bonus.h"
 
-static char	*move_buffer(char *buffer)
+static char	*move_buffer(char *buffer, int len)
 {
-	int		i;
 	char	*new_buffer;
 
-	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	if (buffer[i] == '\n')
-		i++;
-	if (!buffer[i])
+	if (!buffer || len == 0 || !buffer[len])
 	{
 		free(buffer);
 		return (NULL);
 	}
-	new_buffer = ft_substr(buffer, i, ft_strlen(buffer) - i);
+	new_buffer = ft_substr(buffer, len, ft_strlen(buffer) - len);
 	free(buffer);
 	return (new_buffer);
 }
 
-static char	*get_lines(char *buffer)
+static t_lineandlen	*get_lines(char *buffer)
 {
-	int	i;
+	int				i;
+	t_lineandlen	*res;
 
 	i = 0;
 	if (!buffer || buffer[0] == '\0')
@@ -44,7 +39,12 @@ static char	*get_lines(char *buffer)
 		i++;
 	if (buffer[i] == '\n')
 		i++;
-	return (ft_substr(buffer, 0, i));
+	res = malloc(sizeof(t_lineandlen));
+	if (!res)
+		return (NULL);
+	res->line = ft_substr(buffer, 0, i);
+	res->len = i;
+	return (res);
 }
 
 static char	*fill_buffer(int fd, char *buffer)
@@ -52,6 +52,8 @@ static char	*fill_buffer(int fd, char *buffer)
 	char	*tmp;
 	int		bytes;
 
+	if (!buffer)
+		buffer = ft_strdup("");
 	tmp = malloc(BUFFER_SIZE + 1);
 	if (!tmp)
 		return (NULL);
@@ -59,30 +61,46 @@ static char	*fill_buffer(int fd, char *buffer)
 	while (!ft_strchr(buffer, '\n') && bytes > 0)
 	{
 		bytes = read(fd, tmp, BUFFER_SIZE);
-		if (bytes == -1)
+		if (bytes > 0)
 		{
-			free(tmp);
-			free(buffer);
-			return (NULL);
+			tmp[bytes] = '\0';
+			buffer = ft_strjoin(buffer, tmp);
 		}
-		tmp[bytes] = '\0';
-		buffer = ft_strjoin(buffer, tmp);
 	}
 	free(tmp);
+	if (bytes < 0)
+	{
+		free(buffer);
+		return (NULL);
+	}
 	return (buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[1024];
-	char		*res;
+	static char		*buffer[1024];
+	t_lineandlen	*tmp;
+	char			*res;
 
 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer[fd] = fill_buffer(fd, buffer[fd]);
 	if (!buffer[fd])
 		return (NULL);
-	res = get_lines(buffer[fd]);
-	buffer[fd] = move_buffer(buffer[fd]);
+	tmp = get_lines(buffer[fd]);
+	if (!tmp)
+	{
+		if (buffer[fd] && buffer[fd][0])
+			res = ft_strdup(buffer[fd]);
+		else
+			res = NULL;
+		free(buffer[fd]);
+		buffer[fd] = NULL;
+		return (res);
+	}
+	buffer[fd] = move_buffer(buffer[fd], tmp->len);
+	res = ft_strdup(tmp->line);
+	free(tmp->line);
+	free(tmp);
 	return (res);
 }

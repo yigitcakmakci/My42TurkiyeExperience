@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 17:15:41 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/09/18 17:15:42 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:42:56 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 
 # include <stdlib.h>
 
+typedef struct lineandlen
+{
+	char	*line;
+	int		len;
+}	t_lineandlen;
+
+void	free_all_buffers(char **buffer);
 char	*ft_strdup(char *s);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
