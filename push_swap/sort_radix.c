@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:48:47 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/23 13:19:19 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/25 18:33:29 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	radix_mechanism(int max_byte, t_stack **stack_a, t_stack **stack_b)
 		if (byte == max_byte)
 			break ;
 		pong_process(stack_a, stack_b, byte);
-		byte++;
 	}
 	while (*stack_b != NULL)
 		pa(stack_a, stack_b);

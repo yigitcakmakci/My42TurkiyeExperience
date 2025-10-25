@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 13:30:53 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/24 13:03:34 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/25 20:10:29 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 static void	optimized_push_b(t_stack **a, t_stack **b, int chunk_size)
 {
-	int chunk_index;
-	int counter;
-	int midpoint;
+	int	chunk_index;
+	int	counter;
+	int	midpoint;
 
 	chunk_index = 1;
 	while (*a)
 	{
-		while (counter < chunk_size)
+		counter = 0;
+		while (counter < chunk_size && *a)
 		{
-			midpoint = ((chunk_size * chunk_index) - chunk_size);
+			midpoint = ((chunk_size * chunk_index) - chunk_size / 2);
 			if ((*a)->index < (chunk_size * chunk_index)
 				&& (*a)-> index >= (chunk_size * (chunk_index - 1)))
 			{
+				pb(a, b);
 				counter++;
+				if ((*b)-> index < midpoint)
+					rb(b);
 			}
 			else
 				ra(a);
 		}
+		chunk_index++;
 	}
 }
 
@@ -61,7 +66,7 @@ void	sort_chunk_based(t_stack **a, t_stack **b)
 	if (len <= 100)
 		chunk_size = 20;
 	else
-		chunk_size = (len / 11) + 1;
+		chunk_size = len / 12;
 	optimized_push_b(a, b, chunk_size);
 	largest_push(a, b);
 }

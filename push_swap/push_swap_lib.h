@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:01:21 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/24 10:57:25 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/25 20:02:16 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void				rb(t_stack **b);
 void				sa(t_stack **swap);
 void				sb(t_stack **swap);
 
-void				move_stack_a(int pos, int len, t_stack **a);
+//static void			move_stack_a(int pos, int len, t_stack **a);
 void				move_stack_b(int pos, int len, t_stack **b);
 int					find_pos_a(t_stack *a, int chunk_size, int chunk_index);
 int					find_pos_b(t_stack *b, int max_index);
