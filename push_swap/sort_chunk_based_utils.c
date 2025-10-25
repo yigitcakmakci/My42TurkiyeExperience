@@ -6,11 +6,31 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 10:36:09 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/24 12:27:19 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/25 21:17:50 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_lib.h"
+
+void	move_stack_a(int pos, int len, t_stack **a)
+{
+    if (pos <= len / 2)
+    {
+        while (pos > 0)
+        {
+            ra(a); // ra kullan
+            pos--;
+        }
+    }
+    else
+    {
+        while (pos < len)
+        {
+            rra(a); // rra kullan
+            pos++;
+        }
+    }
+}
 
 int	find_pos_b(t_stack *b, int max_index)
 {

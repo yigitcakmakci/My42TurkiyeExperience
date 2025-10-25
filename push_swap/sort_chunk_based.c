@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 13:30:53 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/25 20:10:29 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/25 22:08:57 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	sort_chunk_based(t_stack **a, t_stack **b)
 	if (len <= 100)
 		chunk_size = 20;
 	else
-		chunk_size = len / 12;
+		chunk_size = len / 9;
 	optimized_push_b(a, b, chunk_size);
 	largest_push(a, b);
 }

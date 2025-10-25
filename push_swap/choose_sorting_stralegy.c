@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:39:13 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/25 19:55:48 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/25 22:11:22 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	choose_stralegy(t_stack **a, t_stack **b)
 		sort_hard_coded(a);
 	else if (len <= 5)
 		sort_selection(a, b);
+	else if (len <= 100)
+		sort_chunk_based(a, b);
 	else
 		sort_chunk_based(a, b);
 }

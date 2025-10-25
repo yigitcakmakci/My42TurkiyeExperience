@@ -6,30 +6,13 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:48:47 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/25 18:33:29 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/25 22:20:38 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap_lib.h"
 #include <unistd.h>
-
-static	void	pong_process(t_stack **stack_a, t_stack **stack_b, int byte)
-{
-	int	stack_l;
-	int	i;
-
-	stack_l = stack_len(*stack_b);
-	i = 0;
-	while (i < stack_l)
-	{
-		if (((*stack_b)-> index >> byte) & 1)
-			pa(stack_a, stack_b);
-		else
-			rb(stack_b);
-		i++;
-	}
-}
 
 static	void	ping_process(t_stack **stack_a, t_stack **stack_b, int byte)
 {
@@ -41,9 +24,13 @@ static	void	ping_process(t_stack **stack_a, t_stack **stack_b, int byte)
 	while (i < stack_l)
 	{
 		if (((*stack_a)-> index >> byte) & 1)
-			ra(stack_a);
-		else
+		{
 			pb(stack_a, stack_b);
+		}
+		else
+		{
+			ra(stack_a);
+		}
 		i++;
 	}
 }
@@ -56,13 +43,10 @@ void	radix_mechanism(int max_byte, t_stack **stack_a, t_stack **stack_b)
 	while (byte < max_byte)
 	{
 		ping_process(stack_a, stack_b, byte);
+		while (*stack_b != NULL)
+			pa(stack_a, stack_b);
 		byte++;
-		if (byte == max_byte)
-			break ;
-		pong_process(stack_a, stack_b, byte);
 	}
-	while (*stack_b != NULL)
-		pa(stack_a, stack_b);
 }
 
 void	sort_radix(t_stack **stack_a, t_stack **stack_b)
