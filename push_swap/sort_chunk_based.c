@@ -6,11 +6,29 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 13:30:53 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/25 22:08:57 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 16:19:19 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_lib.h"
+
+static int	smart_rotate_a(t_stack **a, int chunk_index, int chunk_size)
+{
+	int	min;
+	int	max;
+	int	pos;
+	int	stack_l;
+
+	stack_l = stack_len(*a);
+
+	min = ((chunk_index - 1) * chunk_size);
+	max = chunk_index * chunk_size;
+	pos = find_pos_a(*a, min, max, stack_l);
+	if (pos == -1)
+		return (0);
+	move_stack_a(pos, stack_l, a);
+	return (1);
+}
 
 static void	optimized_push_b(t_stack **a, t_stack **b, int chunk_size)
 {
@@ -33,8 +51,8 @@ static void	optimized_push_b(t_stack **a, t_stack **b, int chunk_size)
 				if ((*b)-> index < midpoint)
 					rb(b);
 			}
-			else
-				ra(a);
+			else if (smart_rotate_a(a, chunk_index, chunk_size) == 0)
+				break ;
 		}
 		chunk_index++;
 	}
@@ -63,10 +81,10 @@ void	sort_chunk_based(t_stack **a, t_stack **b)
 	int	len;
 
 	len = stack_len(*a);
-	if (len <= 100)
+	if (len <= 120)
 		chunk_size = 20;
 	else
-		chunk_size = len / 9;
+		chunk_size = len / 10;
 	optimized_push_b(a, b, chunk_size);
 	largest_push(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:01:14 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/06 18:51:14 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/25 23:23:11 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ void	ra(t_stack **a)
 
 void	rb(t_stack **b)
 {
+	push_swap_rotate(b);
+	write(1, "rb\n", 3);
+}
+
+void	rr(t_stack **a, t_stack **b)
+{
+	push_swap_rotate(a);
 	push_swap_rotate(b);
 	write(1, "rb\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:49:32 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/23 13:20:30 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 16:23:53 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,14 @@ int	*push_swap(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-	#include<stdio.h>
+	push_swap(argc, argv);
+	
+	/*#include<stdio.h>
 	int i = 0;
 	int *res = push_swap(argc, argv);
-	//push_swap(argc, argv);
 	while (res[i] != '\0')
 	{
 		printf("%i ", res[i]);
 		i++;
-	}
+	}*/
 }
