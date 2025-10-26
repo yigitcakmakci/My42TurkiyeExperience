@@ -29,5 +29,5 @@ void	choose_stralegy(t_stack **a, t_stack **b)
 	else if (len <= 5)
 		sort_selection(a, b);
 	else
-		sort_chunk_based(a, b);
+		sort_radix(a, b);
 }
