@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 13:03:10 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/23 12:09:10 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 19:06:11 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	find_smallest(int *smallest, t_stack **a)
 		}
 		tmp = tmp-> next;
 	}
-
 	smallest[1] = 2147483647;
 	tmp = *a;
 	while (tmp)

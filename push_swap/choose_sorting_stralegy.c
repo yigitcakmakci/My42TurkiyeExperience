@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:39:13 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/25 23:01:57 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 16:36:16 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	choose_stralegy(t_stack **a, t_stack **b)
 	else if (len <= 5)
 		sort_selection(a, b);
 	else
-		sort_radix(a, b);
+		sort_chunk_based(a, b);
 }

@@ -6,14 +6,14 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:01:11 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/07 20:18:11 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 18:59:47 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_lib.h"
 #include <unistd.h>
 
-void	push_swap_swap(t_stack **swap)
+static void	push_swap_swap(t_stack **swap)
 {
 	int	hold_number;
 

@@ -6,29 +6,11 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 13:30:53 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/26 16:19:19 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 17:34:15 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_lib.h"
-
-static int	smart_rotate_a(t_stack **a, int chunk_index, int chunk_size)
-{
-	int	min;
-	int	max;
-	int	pos;
-	int	stack_l;
-
-	stack_l = stack_len(*a);
-
-	min = ((chunk_index - 1) * chunk_size);
-	max = chunk_index * chunk_size;
-	pos = find_pos_a(*a, min, max, stack_l);
-	if (pos == -1)
-		return (0);
-	move_stack_a(pos, stack_l, a);
-	return (1);
-}
 
 static void	optimized_push_b(t_stack **a, t_stack **b, int chunk_size)
 {
@@ -51,8 +33,8 @@ static void	optimized_push_b(t_stack **a, t_stack **b, int chunk_size)
 				if ((*b)-> index < midpoint)
 					rb(b);
 			}
-			else if (smart_rotate_a(a, chunk_index, chunk_size) == 0)
-				break ;
+			else
+				ra(a);
 		}
 		chunk_index++;
 	}

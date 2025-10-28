@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:58:37 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/07 18:49:14 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 19:04:23 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	*array_init(t_stack *stack)
 	array = malloc(sizeof(int) * max_len);
 	if (!array)
 		return (NULL);
-
 	i = 0;
 	while (stack)
 	{

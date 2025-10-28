@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:01:21 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/26 15:03:44 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 19:01:02 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,23 @@ char				*ft_strdup(const char *s);
 int					ft_atoi(const char *str);
 long				ft_atoi_long(const char *str);
 char				**ft_split(char const *s, char c);
-void				sort_radix(t_stack **stack_a, t_stack **stack_b);
 void				sort_hard_coded(t_stack **a);
 void				sort_chunk_based(t_stack **a, t_stack **b);
 void				sort_selection(t_stack **a, t_stack **b);
-void				move_b(int value, t_stack **b);
 
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);
 void				rra(t_stack **a);
 void				rrb(t_stack **b);
-void				rrr(t_stack **a, t_stack **b);
 void				ra(t_stack **a);
 void				rb(t_stack **b);
-void				rr(t_stack **a, t_stack **b);
 void				sa(t_stack **swap);
 void				sb(t_stack **swap);
 
 void				move_stack_a(int pos, int len, t_stack **a);
 void				move_stack_b(int pos, int len, t_stack **b);
-int					find_pos_a(t_stack *a, int chunk_size, int chunk_index, int len);
+int					find_pos_a(t_stack *a, int chunk_size, int chunk_index,
+						int len);
 int					find_pos_b(t_stack *b, int max_index);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:01:14 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/25 23:23:11 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 19:00:14 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void	push_swap_rotate(t_stack **rotate)
+static void	push_swap_rotate(t_stack **rotate)
 {
 	t_stack	*first;
 	t_stack	*last;
 
-	if (!rotate || !*rotate || !((*rotate)-> next))
-		return ;
 	first = *rotate;
 	*rotate = first -> next;
 	first -> next = NULL;
@@ -32,19 +30,16 @@ void	push_swap_rotate(t_stack **rotate)
 
 void	ra(t_stack **a)
 {
+	if (!a || !*a || !((*a)-> next))
+		return ;
 	push_swap_rotate(a);
 	write(1, "ra\n", 3);
 }
 
 void	rb(t_stack **b)
 {
-	push_swap_rotate(b);
-	write(1, "rb\n", 3);
-}
-
-void	rr(t_stack **a, t_stack **b)
-{
-	push_swap_rotate(a);
+	if (!b || !*b || !((*b)-> next))
+		return ;
 	push_swap_rotate(b);
 	write(1, "rb\n", 3);
 }

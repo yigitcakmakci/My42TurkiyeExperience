@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:49:32 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/26 16:23:53 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 18:47:05 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,13 @@ int	*push_swap(int argc, char **argv)
 	int		*result;
 
 	tmp = set_tmp(argc, argv);
-	if (argc == 1)
+	if (!tmp)
 		return (NULL);
+	if (argc == 1)
+	{
+		free_split(tmp);
+		return (NULL);
+	}
 	if (!check_argv(tmp))
 	{		
 		write(1, "Error\n", 7);
@@ -53,16 +58,7 @@ int	*push_swap(int argc, char **argv)
 	return (result);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	push_swap(argc, argv);
-	
-	/*#include<stdio.h>
-	int i = 0;
-	int *res = push_swap(argc, argv);
-	while (res[i] != '\0')
-	{
-		printf("%i ", res[i]);
-		i++;
-	}*/
 }

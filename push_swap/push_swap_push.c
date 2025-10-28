@@ -6,7 +6,7 @@
 /*   By: ycakmakc <ycakmakc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:01:19 by ycakmakc          #+#    #+#             */
-/*   Updated: 2025/10/09 13:33:03 by ycakmakc         ###   ########.fr       */
+/*   Updated: 2025/10/26 18:59:35 by ycakmakc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void	push_swap_push(t_stack **from, t_stack **to)
+static void	push_swap_push(t_stack **from, t_stack **to)
 {
 	t_stack	*tmp;
 
